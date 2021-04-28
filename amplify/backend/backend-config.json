@@ -6,5 +6,29 @@
       "dependsOn": [],
       "customAuth": false
     }
+  },
+  "api": {
+    "amazonclone": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 365,
+              "description": "backend"
+            }
+          },
+          "additionalAuthenticationProviders": []
+        }
+      }
+    }
+  },
+  "storage": {
+    "s3405b7827": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation"
+    }
   }
 }
