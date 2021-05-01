@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import AddOutlinedIcon from '@material-ui/icons/AddOutlined';
-import { API } from 'aws-amplify';
+import { API, Storage } from 'aws-amplify';
 import { createTodo as createTodoMutation } from '../graphql/mutations';
+import { listTodos } from '../graphql/queries';
 
 const initialFormState = { name: '', description: '' };
 
@@ -21,10 +22,12 @@ const TodoForm = () => {
 	};
 
 	// file on change function
-	const onChange = e => {
+	const onChange = async e => {
 		if (!e.target.files[0]) return;
 		const file = e.target.files[0];
+		await Storage.put(file.name, file);
 		setFormData({ ...formData, image: file.name });
+		fetchTodos();
 	};
 
 	// create todo function
@@ -35,11 +38,37 @@ const TodoForm = () => {
 			query: createTodoMutation,
 			variables: { input: formData },
 		});
+
+		if (formData.image) {
+			const image = await Storage.get(formData.image);
+			formData.image = image;
+		}
 		setTodos([...todos, formData]);
 		setFormData(initialFormState);
-		console.log(todos);
 	};
 
+	// fetch todos
+
+	const fetchTodos = async () => {
+		const apiData = await API.graphql({ query: listTodos });
+		const todosFromApi = apiData.data.listTodos.items;
+		await Promise.all(
+			todosFromApi.map(async todo => {
+				if (todo.image) {
+					const image = await Storage.get(todo.image);
+					todo.image = image;
+				}
+				return todo;
+			})
+		);
+		setTodos(apiData.data.listTodos.items);
+	};
+
+	// use effect
+
+	useEffect(() => {
+		fetchTodos();
+	}, []);
 	return (
 		<TodoWrapper>
 			<form>

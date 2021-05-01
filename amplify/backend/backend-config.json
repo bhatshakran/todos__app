@@ -24,5 +24,11 @@
         }
       }
     }
+  },
+  "storage": {
+    "s3d531eb32": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation"
+    }
   }
 }

@@ -11,7 +11,9 @@ const awsmobile = {
     "aws_appsync_graphqlEndpoint": "https://pbuskigpwngaffv5enl2wvcmby.appsync-api.ap-south-1.amazonaws.com/graphql",
     "aws_appsync_region": "ap-south-1",
     "aws_appsync_authenticationType": "API_KEY",
-    "aws_appsync_apiKey": "da2-labyqfkvnjfo5aw7kc5k7wjyhu"
+    "aws_appsync_apiKey": "da2-labyqfkvnjfo5aw7kc5k7wjyhu",
+    "aws_user_files_s3_bucket": "todosapp70643dea6cae4c27998f5b79aa64ac0a91426-staging",
+    "aws_user_files_s3_bucket_region": "ap-south-1"
 };
 
 
