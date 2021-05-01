@@ -2,10 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import AddOutlinedIcon from '@material-ui/icons/AddOutlined';
 import { API } from 'aws-amplify';
-import {
-	createTodo as createTodoMutation,
-	// deleteTodo as deleteTodoMutation,
-} from '../graphql/mutations';
+import { createTodo as createTodoMutation } from '../graphql/mutations';
 
 const initialFormState = { name: '', description: '' };
 
