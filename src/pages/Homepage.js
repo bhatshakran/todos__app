@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import TodoForm from '../components/TodoForm';
-// import { AmplifySignOut } from '@aws-amplify/ui-react';
+import { AmplifySignOut } from '@aws-amplify/ui-react';
 
 const Homepage = () => {
 	return (
@@ -19,7 +19,7 @@ const Homepage = () => {
 				<div className='todoCard__createTodo'></div>
 				<TodoForm />
 			</div>
-			{/* <AmplifySignOut style={{ marginTop: '4rem' }} /> */}
+			<AmplifySignOut style={{ marginTop: '4rem' }} />
 		</HomeWrapper>
 	);
 };

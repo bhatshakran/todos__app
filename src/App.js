@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-// import { withAuthenticator } from '@aws-amplify/ui-react';
+import { withAuthenticator } from '@aws-amplify/ui-react';
 // import { listTodos } from './graphql/queries';
 
 import Homepage from './pages/Homepage';
@@ -70,4 +70,4 @@ function App() {
 	);
 }
 
-export default App;
+export default withAuthenticator(App);
