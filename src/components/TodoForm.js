@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import AddOutlinedIcon from '@material-ui/icons/AddOutlined';
-import { API } from 'aws-amplify';
-import { createTodo as createTodoMutation } from '../graphql/mutations';
+// import { API } from 'aws-amplify';
+// import { createTodo as createTodoMutation } from '../graphql/mutations';
 
 const initialFormState = { name: '', description: '' };
 
@@ -31,10 +31,10 @@ const TodoForm = () => {
 
 	const createTodo = async () => {
 		if (!formData.name || !formData.description) return;
-		await API.graphql({
-			query: createTodoMutation,
-			variables: { input: formData },
-		});
+		// await API.graphql({
+		// 	query: createTodoMutation,
+		// 	variables: { input: formData },
+		// });
 		setTodos([...todos, formData]);
 		setFormData(initialFormState);
 		console.log(todos);
